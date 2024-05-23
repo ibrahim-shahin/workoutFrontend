@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import ax from 'axios'
 import { useNavigate } from 'react-router-dom'
+import LINK from '../link'
 
 // components
 import WorkoutDetails from '../components/WorkoutDetails'
@@ -15,7 +16,7 @@ const Home = () => {
   useEffect(() => {
     const fetchWorkouts = async () => {
       try {
-        let response = await ax.get("http://localhost:4000/api/workouts", {
+        let response = await ax.get(`${LINK}/api/workouts`, {
           headers: { 'Authorization': `Bearer ${users.token}` },
         });
         setWorkouts(response.data)

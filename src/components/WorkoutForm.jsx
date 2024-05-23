@@ -1,6 +1,6 @@
 import { useState } from "react"
 import ax from 'axios'
-
+import LINK from "../link"
 
 const WorkoutForm = ({show,setShow}) => {
   
@@ -17,7 +17,7 @@ const WorkoutForm = ({show,setShow}) => {
       const workout = {title, load, reps}
       const users = JSON.parse(localStorage.getItem('user'))
   
-      await ax.post('http://localhost:4000/api/workouts/' ,workout,{ headers: {
+      await ax.post(`${LINK}/api/workouts/` ,workout,{ headers: {
         'Authorization': `Bearer ${users.token}`
       }})
      

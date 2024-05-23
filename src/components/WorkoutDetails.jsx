@@ -2,6 +2,7 @@ import ax from 'axios'
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import { useState } from 'react'
+import LINK from '../link'
 
 const WorkoutDetails = ({ workout, show, setShow }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -18,7 +19,7 @@ const WorkoutDetails = ({ workout, show, setShow }) => {
     try {
       const updatedWorkout = { title, load, reps }
       console.log(updatedWorkout)
-      await ax.patch(`http://localhost:4000/api/workouts/${workout._id}`, updatedWorkout, {
+      await ax.patch(`${LINK}/api/workouts/${workout._id}`, updatedWorkout, {
         headers: {
           'Authorization': `Bearer ${user.token}`
         }
@@ -37,7 +38,7 @@ const WorkoutDetails = ({ workout, show, setShow }) => {
     if (!user) {
       return
     }
-    await ax.delete(`http://localhost:4000/api/workouts/${workout._id}` , {
+    await ax.delete(`${LINK}/api/workouts/${workout._id}` , {
       headers: {
         'Authorization': `Bearer ${user.token}`
       }

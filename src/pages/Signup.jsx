@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import ax from 'axios'
+import LINK from "../link"
+
 const Signup = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -16,7 +18,7 @@ const Signup = () => {
       setError(null)
 
       //send the email and passowrd to server
-      const response = await ax.post('http://localhost:4000/api/user/signup', { email, password })
+      const response = await ax.post(`${LINK}/api/user/signup`, { email, password })
 
       // save the user to local storage
       localStorage.setItem('user', JSON.stringify(response.data))
